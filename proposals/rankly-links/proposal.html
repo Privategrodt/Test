@@ -376,40 +376,6 @@ td .mo{font-size:16px; color:var(--muted);}
 .note p{font-size:14px; line-height:1.5; color:var(--muted);}
 .note p b{color:var(--fg); font-weight:600;}
 
-/* process */
-.steps{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
-.steps .card{min-height:250px; display:flex; flex-direction:column;}
-.steps .bar{height:3px; border-radius:999px; background:var(--cyan); width:44px; margin:22px 0 auto;}
-.steps .ct{margin-top:auto;}
-.timeline{margin-top:26px; display:flex; align-items:center; gap:16px; background:var(--surface-2); border:1px solid var(--border);
-  border-radius:999px; padding:16px 26px;}
-.timeline .dot{width:8px; height:8px; border-radius:999px; background:var(--cyan); box-shadow:0 0 12px 2px rgba(0,194,255,.7);}
-.timeline .t{font-size:15px; color:var(--muted);} .timeline .t b{color:var(--fg); font-weight:600;}
-
-/* index page */
-.idx{display:grid; grid-template-columns:.85fr 1.15fr; gap:24px; align-items:stretch;}
-.idx .hero{background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:40px; display:flex; flex-direction:column; justify-content:center;}
-.idx .hero .big{font-family:'Unbounded',sans-serif; font-weight:800; font-size:92px; color:var(--cyan); letter-spacing:-.03em; line-height:1;}
-.idx .hero .lbl{margin-top:18px; font-size:17px; color:var(--muted); line-height:1.55;}
-.idx .list{display:grid; gap:20px;}
-.idx .list .card{display:flex; gap:22px; align-items:flex-start; padding:26px 30px;}
-.idx .list .ic{flex:none; width:44px; height:44px; border-radius:12px; background:rgba(0,194,255,.10); border:1px solid rgba(0,194,255,.3);
-  display:flex; align-items:center; justify-content:center;}
-.idx .list .ic svg{width:20px; height:20px; stroke:var(--cyan); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round;}
-.idx .list .cd{margin-top:8px;}
-
-/* cta */
-.cta-wrap{display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center;}
-.cta-wrap h2{font-size:74px;}
-.cta-wrap p{margin-top:26px; font-size:18px; line-height:1.6; color:var(--muted); max-width:560px;}
-.btn{display:inline-flex; align-items:center; gap:12px; margin-top:38px; background:var(--cyan); color:#09090B;
-  border-radius:999px; padding:19px 34px; font-size:16px; font-weight:700;}
-.contacts{background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:36px 38px;}
-.contacts .row{display:flex; justify-content:space-between; align-items:center; padding:19px 0; border-top:1px solid var(--border);}
-.contacts .row:first-of-type{border-top:none; padding-top:6px;}
-.contacts .l{font-size:12px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--muted-2);}
-.contacts .v{font-size:17px; font-weight:600;}
-.contacts .v.ph{color:var(--muted-2); font-weight:500;}
 </style>
 </head>
 <body>
@@ -573,92 +539,6 @@ td .mo{font-size:16px; color:var(--muted);}
     </div>
   </div>
   <div class="foot"><span>rankly.links</span><span>Стоимость</span><span class="pg">05</span></div>
-</section>
-
-<!-- 06 PROCESS -->
-<section class="slide">
-  <div class="glow glow-b"></div>
-  <div class="head">
-    <div>
-      <span class="eyebrow">Процесс</span>
-      <h2 class="title" style="margin-top:20px;">Как проходит <span class="cyan">заказ</span></h2>
-    </div>
-    <p class="lead">От заявки до отчёта по индексации — четыре шага и никакой лишней переписки.</p>
-  </div>
-  <div class="body">
-    <div class="steps">
-      <div class="card"><div class="num">01</div><div class="bar"></div><div class="ct">Заявка<br>и бриф</div><div class="cd">Согласуем объём, форматы ссылок, тематику и регион проекта.</div></div>
-      <div class="card"><div class="num">02</div><div class="bar"></div><div class="ct">Подбор<br>доноров</div><div class="cd">Формируем список площадок под рынок и задачи, фиксируем смету.</div></div>
-      <div class="card"><div class="num">03</div><div class="bar"></div><div class="ct">Простановка<br>2–4 дня</div><div class="cd">Размещаем ссылки в согласованном объёме с момента заказа.</div></div>
-      <div class="card"><div class="num">04</div><div class="bar"></div><div class="ct">Индексация<br>и отчёт</div><div class="cd">Прогоняем размещения через свой индексатор и отдаём отчёт.</div></div>
-    </div>
-    <div class="timeline">
-      <span class="dot"></span>
-      <span class="t"><b>Простановка: 2–4 дня</b> с момента заказа &nbsp;·&nbsp; отчёт по индексации — после прогона через собственный индексатор</span>
-    </div>
-  </div>
-  <div class="foot"><span>rankly.links</span><span>Процесс</span><span class="pg">06</span></div>
-</section>
-
-<!-- 07 INDEXATION -->
-<section class="slide">
-  <div class="glow glow-a"></div>
-  <div class="head">
-    <div>
-      <span class="eyebrow">Индексация и отчётность</span>
-      <h2 class="title" style="margin-top:20px;">Результат видно <span class="cyan">в индексе</span></h2>
-    </div>
-    <p class="lead">Размещённая ссылка работает только тогда, когда она в индексе. Поэтому мы доводим её туда сами.</p>
-  </div>
-  <div class="body">
-    <div class="idx">
-      <div class="hero">
-        <span class="eyebrow">Средний показатель</span>
-        <div class="big" style="margin-top:22px;">60–70%</div>
-        <div class="lbl">размещённых ссылок попадают в индекс после прогона через собственный индексатор.</div>
-      </div>
-      <div class="list">
-        <div class="card">
-          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 10l7-7 7 7"/></svg></div>
-          <div><div class="ct">Собственный индексатор</div><div class="cd">Инструмент на нашей стороне: не ждём индексации, а ускоряем её для каждого размещения.</div></div>
-        </div>
-        <div class="card">
-          <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h10"/></svg></div>
-          <div><div class="ct">Удобные отчёты</div><div class="cd">По каждому заказу — список размещений, площадки и статус индексации. Без ручной сверки.</div></div>
-        </div>
-        <div class="card">
-          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-          <div><div class="ct">Сроки под контролем</div><div class="cd">Простановка 2–4 дня с момента заказа, дальше — работа по индексации и отчёт.</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="foot"><span>rankly.links</span><span>Индексация</span><span class="pg">07</span></div>
-</section>
-
-<!-- 08 CTA -->
-<section class="slide">
-  <div class="glow glow-a"></div><div class="glow glow-b"></div>
-  <div class="head" style="align-items:center;">
-    <div><span class="eyebrow">Контакты</span></div>
-    <p class="lead">Рассчитаем смету под ваш объём и подберём комбинацию форматов под задачи проекта.</p>
-  </div>
-  <div class="body">
-    <div class="cta-wrap">
-      <div>
-        <h2 class="title" style="font-size:74px;">Готовы<br>начать<span class="cyan">?</span></h2>
-        <p>Напишите объём и тематику проекта — вернёмся с расчётом стоимости и сроками простановки.</p>
-        <span class="btn">Обсудить проект <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:none;stroke:#09090B;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
-      </div>
-      <div class="contacts">
-        <div class="row"><span class="l">Telegram</span><span class="v ph">указать контакт</span></div>
-        <div class="row"><span class="l">E-mail</span><span class="v ph">указать контакт</span></div>
-        <div class="row"><span class="l">Сайт</span><span class="v">rankly.links</span></div>
-        <div class="row"><span class="l">Простановка</span><span class="v cyan">2–4 дня</span></div>
-      </div>
-    </div>
-  </div>
-  <div class="foot"><span>rankly.links</span><span>Коммерческое предложение · 2026</span><span class="pg">08</span></div>
 </section>
 
 </body>
