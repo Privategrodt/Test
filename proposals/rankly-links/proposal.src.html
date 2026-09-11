@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>rankly.links — Коммерческое предложение</title>
+<style>/*FONTS*/</style>
+<style>
+:root{
+  --bg:#09090B; --surface:#0E0E11; --surface-2:#131317; --border:#1E1E24;
+  --cyan:#00C2FF; --fg:#FFFFFF; --muted:#A3A3AC; --muted-2:#75757E; --red:#F04444;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+body{background:var(--bg); color:var(--fg); font-family:'Inter',system-ui,sans-serif; font-weight:400;}
+
+@page{ size:1600px 900px; margin:0; }
+
+.slide{
+  position:relative; width:1600px; height:900px; overflow:hidden;
+  background-color:var(--bg);
+  background-image:radial-gradient(circle, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size:28px 28px;
+  padding:72px 84px 104px;
+  display:flex; flex-direction:column;
+  page-break-after:always; break-after:page;
+}
+.slide:last-child{page-break-after:auto; break-after:auto;}
+
+/* glows */
+.glow{position:absolute; border-radius:999px; filter:blur(90px); pointer-events:none;}
+.glow-a{width:760px; height:760px; right:-260px; top:-320px; background:rgba(0,194,255,.16);}
+.glow-b{width:620px; height:620px; left:-280px; bottom:-320px; background:rgba(0,194,255,.10);}
+.glow-c{width:900px; height:520px; left:50%; top:-260px; transform:translateX(-50%); background:rgba(0,194,255,.13);}
+
+/* type */
+.dsp{font-family:'Unbounded',system-ui,sans-serif; font-weight:800; text-transform:uppercase; letter-spacing:-.02em; line-height:1.02;}
+h2.title{font-family:'Unbounded',system-ui,sans-serif; font-weight:800; text-transform:uppercase; letter-spacing:-.02em; line-height:1.04; font-size:52px;}
+.cyan{color:var(--cyan);}
+.muted{color:var(--muted);} .muted2{color:var(--muted-2);}
+
+.eyebrow{display:inline-flex; align-items:center; gap:11px; font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.16em; color:var(--cyan);}
+.eyebrow::before{content:""; width:7px; height:7px; border-radius:999px; background:var(--cyan); box-shadow:0 0 12px 2px rgba(0,194,255,.75); flex:none;}
+
+.head{display:flex; align-items:flex-end; justify-content:space-between; gap:48px; padding-bottom:26px; border-bottom:1px solid var(--border); position:relative; z-index:2;}
+.head .lead{max-width:560px; font-size:16px; line-height:1.55; color:var(--muted);}
+.body{flex:1; display:flex; flex-direction:column; justify-content:center; padding:34px 0 0; position:relative; z-index:2;}
+
+.foot{position:absolute; left:84px; right:84px; bottom:44px; display:flex; justify-content:space-between; align-items:center;
+  font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--muted-2); z-index:2;}
+.foot .pg{font-family:'Unbounded',sans-serif; font-weight:700; color:var(--muted-2); letter-spacing:0;}
+
+/* cards */
+.card{background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:30px 30px 32px;}
+.card-2{background:var(--surface-2);}
+.chip{display:inline-flex; align-items:center; gap:8px; background:var(--surface-2); border:1px solid var(--border);
+  border-radius:999px; padding:8px 16px; font-size:13px; font-weight:700; color:var(--muted);}
+.chip.on{color:var(--cyan); border-color:rgba(0,194,255,.35);}
+.num{font-family:'Unbounded',sans-serif; font-weight:700; font-size:26px; color:var(--cyan); letter-spacing:-.01em;}
+.ct{font-family:'Unbounded',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:-.01em; font-size:20px; line-height:1.15;}
+.cd{margin-top:11px; font-size:14.5px; line-height:1.55; color:var(--muted);}
+
+/* ===== cover ===== */
+.cover{justify-content:space-between; padding:72px 84px 0;}
+.cover-top{display:flex; justify-content:space-between; align-items:flex-start; position:relative; z-index:2;}
+.cover-mid{position:relative; z-index:2;}
+.cover-mid h1{font-size:132px; line-height:.94;}
+.cover-mid h1 .dot{color:var(--cyan);}
+.cover-mid p{margin-top:34px; max-width:720px; font-size:19px; line-height:1.6; color:var(--muted);}
+.cover-strip{position:relative; z-index:2; display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-bottom:104px;}
+.cover-strip .card{padding:24px 26px 26px;}
+.cover-strip .v{font-family:'Unbounded',sans-serif; font-weight:700; font-size:32px; color:var(--cyan); letter-spacing:-.02em;}
+.cover-strip .k{margin-top:10px; font-size:14px; color:var(--muted); line-height:1.4;}
+.rule{width:64px; height:3px; background:var(--cyan); border-radius:999px; margin-bottom:26px;}
+
+/* grids */
+.g3{display:grid; grid-template-columns:repeat(6,1fr); gap:20px;}
+.g3 > *{grid-column:span 2;}
+.g3 > .w3{grid-column:span 3;}
+.g5 > *{grid-column:span 2;}
+
+.about{display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;}
+.about h3{font-family:'Unbounded',sans-serif; font-weight:800; text-transform:uppercase; font-size:40px; line-height:1.1; letter-spacing:-.02em;}
+.about p{margin-top:24px; font-size:17px; line-height:1.65; color:var(--muted); max-width:620px;}
+.about .tags{margin-top:30px; display:flex; flex-wrap:wrap; gap:10px;}
+.kpi{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+.kpi .v{font-family:'Unbounded',sans-serif; font-weight:700; font-size:38px; color:var(--cyan); letter-spacing:-.02em; line-height:1;}
+.kpi .k{margin-top:12px; font-size:14px; color:var(--muted); line-height:1.45;}
+
+/* advantages */
+.adv .card{display:flex; flex-direction:column; min-height:208px;}
+.adv .card .num{margin-bottom:auto;}
+.adv .ct{margin-top:26px;}
+
+/* services */
+.svc{display:grid; grid-template-columns:repeat(6,1fr); gap:20px;}
+.svc .card{grid-column:span 2; display:flex; flex-direction:column; padding:26px 26px 24px;}
+.svc .card.wide{grid-column:span 3;}
+.svc .price{margin-top:auto; padding-top:18px; display:flex; align-items:baseline; gap:10px;}
+.svc .price .p{font-family:'Unbounded',sans-serif; font-weight:700; font-size:30px; color:var(--cyan); letter-spacing:-.02em;}
+.svc .price .u{font-size:14px; color:var(--muted-2); font-weight:600;}
+.svc .min{margin-top:14px;}
+.svc .opt{margin-top:14px; font-size:13.5px; color:var(--muted); line-height:1.5; border-top:1px solid var(--border); padding-top:13px;}
+
+/* table */
+table{width:100%; border-collapse:collapse;}
+th{ text-align:left; font-size:12px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--muted-2); padding:0 24px 14px;}
+th.r, td.r{text-align:right;}
+td{padding:12px 24px; border-top:1px solid var(--border); font-size:17px; color:var(--fg); vertical-align:middle;}
+tbody tr:first-child td{border-top:none;}
+.tbl{background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:22px 8px 8px;}
+td .nm{font-family:'Unbounded',sans-serif; font-weight:700; font-size:17px; text-transform:uppercase; letter-spacing:-.01em;}
+td .sub{margin-top:5px; font-size:13px; color:var(--muted-2);}
+td .price{font-family:'Unbounded',sans-serif; font-weight:700; font-size:22px; color:var(--cyan); letter-spacing:-.02em;}
+td .total{font-family:'Unbounded',sans-serif; font-weight:700; font-size:19px;}
+td .mo{font-size:16px; color:var(--muted);}
+.notes{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:18px;}
+.note{background:var(--surface-2); border:1px solid var(--border); border-radius:14px; padding:16px 22px; display:flex; gap:14px; align-items:flex-start;}
+.note .badge{flex:none; width:28px; height:28px; border-radius:999px; background:rgba(0,194,255,.12); border:1px solid rgba(0,194,255,.35);
+  display:flex; align-items:center; justify-content:center;}
+.note .badge svg{width:14px; height:14px; stroke:var(--cyan); fill:none; stroke-width:2.1; stroke-linecap:round; stroke-linejoin:round;}
+.note p{font-size:14px; line-height:1.5; color:var(--muted);}
+.note p b{color:var(--fg); font-weight:600;}
+
+/* process */
+.steps{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+.steps .card{min-height:250px; display:flex; flex-direction:column;}
+.steps .bar{height:3px; border-radius:999px; background:var(--cyan); width:44px; margin:22px 0 auto;}
+.steps .ct{margin-top:auto;}
+.timeline{margin-top:26px; display:flex; align-items:center; gap:16px; background:var(--surface-2); border:1px solid var(--border);
+  border-radius:999px; padding:16px 26px;}
+.timeline .dot{width:8px; height:8px; border-radius:999px; background:var(--cyan); box-shadow:0 0 12px 2px rgba(0,194,255,.7);}
+.timeline .t{font-size:15px; color:var(--muted);} .timeline .t b{color:var(--fg); font-weight:600;}
+
+/* index page */
+.idx{display:grid; grid-template-columns:.85fr 1.15fr; gap:24px; align-items:stretch;}
+.idx .hero{background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:40px; display:flex; flex-direction:column; justify-content:center;}
+.idx .hero .big{font-family:'Unbounded',sans-serif; font-weight:800; font-size:92px; color:var(--cyan); letter-spacing:-.03em; line-height:1;}
+.idx .hero .lbl{margin-top:18px; font-size:17px; color:var(--muted); line-height:1.55;}
+.idx .list{display:grid; gap:20px;}
+.idx .list .card{display:flex; gap:22px; align-items:flex-start; padding:26px 30px;}
+.idx .list .ic{flex:none; width:44px; height:44px; border-radius:12px; background:rgba(0,194,255,.10); border:1px solid rgba(0,194,255,.3);
+  display:flex; align-items:center; justify-content:center;}
+.idx .list .ic svg{width:20px; height:20px; stroke:var(--cyan); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round;}
+.idx .list .cd{margin-top:8px;}
+
+/* cta */
+.cta-wrap{display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center;}
+.cta-wrap h2{font-size:74px;}
+.cta-wrap p{margin-top:26px; font-size:18px; line-height:1.6; color:var(--muted); max-width:560px;}
+.btn{display:inline-flex; align-items:center; gap:12px; margin-top:38px; background:var(--cyan); color:#09090B;
+  border-radius:999px; padding:19px 34px; font-size:16px; font-weight:700;}
+.contacts{background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:36px 38px;}
+.contacts .row{display:flex; justify-content:space-between; align-items:center; padding:19px 0; border-top:1px solid var(--border);}
+.contacts .row:first-of-type{border-top:none; padding-top:6px;}
+.contacts .l{font-size:12px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--muted-2);}
+.contacts .v{font-size:17px; font-weight:600;}
+.contacts .v.ph{color:var(--muted-2); font-weight:500;}
+</style>
+</head>
+<body>
+
+<!-- 01 COVER -->
+<section class="slide cover">
+  <div class="glow glow-a"></div><div class="glow glow-b"></div>
+  <div class="cover-top">
+    <span class="eyebrow">Коммерческое предложение</span>
+    <span class="muted2" style="font-size:13px; font-weight:600; letter-spacing:.15em; text-transform:uppercase;">2026</span>
+  </div>
+  <div class="cover-mid">
+    <div class="rule"></div>
+    <h1 class="dsp">Rankly<span class="dot">.</span>Links</h1>
+    <p>Ссылочное продвижение под ключ: подбор доноров, размещение за 2–4 дня, собственный индексатор и прозрачные отчёты по индексации.</p>
+  </div>
+  <div class="cover-strip">
+    <div class="card"><div class="v">60–70%</div><div class="k">Индексация размещённых ссылок</div></div>
+    <div class="card"><div class="v">2–4 дня</div><div class="k">Простановка с момента заказа</div></div>
+    <div class="card"><div class="v">5</div><div class="k">Форматов ссылок под любые задачи</div></div>
+    <div class="card"><div class="v">от $150</div><div class="k">Минимальный заказ</div></div>
+  </div>
+  <div class="foot"><span>rankly.links</span><span>Коммерческое предложение</span><span class="pg">01</span></div>
+</section>
+
+<!-- 02 ABOUT -->
+<section class="slide">
+  <div class="glow glow-a"></div>
+  <div class="head">
+    <div>
+      <span class="eyebrow">О нас</span>
+      <h2 class="title" style="margin-top:20px;">Ссылки, которые<br><span class="cyan">действительно</span> индексируются</h2>
+    </div>
+    <p class="lead">Мы закрываем весь цикл работы со ссылочным профилем — от подбора площадок до подтверждённой индексации.</p>
+  </div>
+  <div class="body">
+    <div class="about">
+      <div>
+        <h3>Пять форматов<br>под разные задачи</h3>
+        <p>Magic, Homepage, Crowd, Submit и PBN — комбинируем форматы под цели проекта, тематику и регион. Работаем с региональными донорами, поэтому ссылочный профиль выглядит естественно для нужного рынка.</p>
+        <p>Каждое размещение проходит через собственный индексатор, а результат вы видите в отчёте: что размещено, где и что уже в индексе.</p>
+        <div class="tags">
+          <span class="chip on">Magic Links</span>
+          <span class="chip on">Homepage Links</span>
+          <span class="chip on">Crowd Links</span>
+          <span class="chip on">Submit Links</span>
+          <span class="chip on">PBN Links</span>
+        </div>
+      </div>
+      <div class="kpi">
+        <div class="card"><div class="v">60–70%</div><div class="k">Индексация размещённых ссылок</div></div>
+        <div class="card"><div class="v">2–4 дня</div><div class="k">Срок простановки с момента заказа</div></div>
+        <div class="card"><div class="v">Гео</div><div class="k">Региональные доноры под рынок проекта</div></div>
+        <div class="card"><div class="v">Свой</div><div class="k">Индексатор на нашей стороне</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>rankly.links</span><span>О нас</span><span class="pg">02</span></div>
+</section>
+
+<!-- 03 ADVANTAGES -->
+<section class="slide">
+  <div class="glow glow-c"></div>
+  <div class="head">
+    <div>
+      <span class="eyebrow">Преимущества</span>
+      <h2 class="title" style="margin-top:20px;">Почему <span class="cyan">rankly.links</span></h2>
+    </div>
+    <p class="lead">Пять вещей, за которые к нам возвращаются: результат видно в индексе, а не только в отчёте о размещении.</p>
+  </div>
+  <div class="body">
+    <div class="g3 adv">
+      <div class="card"><div class="num">01</div><div class="ct">Индексация<br>60–70%</div><div class="cd">Стабильный процент ссылок, которые реально попадают в индекс.</div></div>
+      <div class="card"><div class="num">02</div><div class="ct">Региональные<br>доноры</div><div class="cd">Площадки под нужный рынок и язык — профиль выглядит естественно.</div></div>
+      <div class="card"><div class="num">03</div><div class="ct">Простановка<br>2–4 дня</div><div class="cd">С момента заказа до готового размещения — без долгих ожиданий.</div></div>
+      <div class="card w3"><div class="num">04</div><div class="ct">Собственный индексатор</div><div class="cd">Не ждём индексации «как получится» — прогоняем ссылки через свой инструмент и доводим до индекса.</div></div>
+      <div class="card w3"><div class="num">05</div><div class="ct">Удобные отчёты по индексации</div><div class="cd">Понятный отчёт по каждому заказу: что размещено, на каких площадках и что уже в индексе.</div></div>
+    </div>
+  </div>
+  <div class="foot"><span>rankly.links</span><span>Преимущества</span><span class="pg">03</span></div>
+</section>
+
+<!-- 04 SERVICES -->
+<section class="slide">
+  <div class="glow glow-a"></div>
+  <div class="head">
+    <div>
+      <span class="eyebrow">Услуги</span>
+      <h2 class="title" style="margin-top:20px;">Форматы <span class="cyan">размещений</span></h2>
+    </div>
+    <p class="lead">Цена указана за одну ссылку при минимальном объёме заказа. Форматы комбинируются между собой.</p>
+  </div>
+  <div class="body">
+    <div class="svc">
+      <div class="card">
+        <div class="ct">Magic Links</div>
+        <div class="cd">Массовое размещение для наращивания ссылочной массы и ускорения индексации.</div>
+        <div class="price"><span class="p">$0.3</span><span class="u">/ ссылка</span></div>
+        <div class="min"><span class="chip">Минимальный заказ — 1 000 шт</span></div>
+      </div>
+      <div class="card">
+        <div class="ct">Crowd Links</div>
+        <div class="cd">Крауд-размещения в тематических обсуждениях — естественный анкорный профиль.</div>
+        <div class="price"><span class="p">$7.5</span><span class="u">/ ссылка</span></div>
+        <div class="min"><span class="chip">Минимальный заказ — 20 шт</span></div>
+      </div>
+      <div class="card">
+        <div class="ct">Submit Links</div>
+        <div class="cd">Размещения в каталогах и сервисах — быстрый старт ссылочного профиля.</div>
+        <div class="price"><span class="p">$11</span><span class="u">/ ссылка</span></div>
+        <div class="min"><span class="chip">Минимальный заказ — 20 шт</span></div>
+      </div>
+      <div class="card wide">
+        <div class="ct">Homepage Links</div>
+        <div class="cd">Ссылки с главных страниц доноров — максимальный вес размещения.</div>
+        <div class="price"><span class="p">$25</span><span class="u">/ ссылка</span></div>
+        <div class="min"><span class="chip">Минимальный заказ — 10 шт</span></div>
+        <div class="opt"><b style="color:#fff; font-weight:600;">Опция:</b> выбор конкретной площадки — <span class="cyan" style="font-weight:600;">$45</span> за ссылку.</div>
+      </div>
+      <div class="card wide">
+        <div class="ct">PBN Links</div>
+        <div class="cd">Гостевые посты на сетке сайтов — полный контроль над контентом и анкорами.</div>
+        <div class="price"><span class="p">$5</span><span class="u">/ guest post</span></div>
+        <div class="min"><span class="chip">Минимальный заказ — 50 шт</span></div>
+        <div class="opt">Формат подходит для планомерного наращивания ссылочного профиля большими пачками.</div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>rankly.links</span><span>Услуги</span><span class="pg">04</span></div>
+</section>
+
+<!-- 05 PRICING -->
+<section class="slide">
+  <div class="glow glow-c"></div>
+  <div class="head">
+    <div>
+      <span class="eyebrow">Стоимость</span>
+      <h2 class="title" style="margin-top:20px;">Прайс-<span class="cyan">лист</span></h2>
+    </div>
+    <p class="lead">Все цены — в долларах США. Итоговая смета формируется под объём и задачи проекта.</p>
+  </div>
+  <div class="body" style="padding-top:26px;">
+    <div class="tbl">
+      <table>
+        <thead>
+          <tr><th style="width:38%">Услуга</th><th class="r">Цена за 1 шт</th><th class="r">Минимальный заказ</th><th class="r">Сумма от</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><div class="nm">Magic Links</div><div class="sub">Массовое наращивание ссылочной массы</div></td><td class="r"><span class="price">$0.3</span></td><td class="r"><span class="mo">1 000 шт</span></td><td class="r"><span class="total">$300</span></td></tr>
+          <tr><td><div class="nm">Homepage Links</div><div class="sub">Ссылки с главных страниц доноров</div></td><td class="r"><span class="price">$25</span></td><td class="r"><span class="mo">10 шт</span></td><td class="r"><span class="total">$250</span></td></tr>
+          <tr><td><div class="nm" style="color:var(--muted);">Homepage Links — выбор площадки</div><div class="sub">Размещение на конкретном доноре</div></td><td class="r"><span class="price">$45</span></td><td class="r"><span class="mo">10 шт</span></td><td class="r"><span class="total">$450</span></td></tr>
+          <tr><td><div class="nm">Crowd Links</div><div class="sub">Крауд-размещения в обсуждениях</div></td><td class="r"><span class="price">$7.5</span></td><td class="r"><span class="mo">20 шт</span></td><td class="r"><span class="total">$150</span></td></tr>
+          <tr><td><div class="nm">Submit Links</div><div class="sub">Каталоги и сервисы</div></td><td class="r"><span class="price">$11</span></td><td class="r"><span class="mo">20 шт</span></td><td class="r"><span class="total">$220</span></td></tr>
+          <tr><td><div class="nm">PBN Links</div><div class="sub">Guest post на сетке сайтов</div></td><td class="r"><span class="price">$5</span></td><td class="r"><span class="mo">50 шт</span></td><td class="r"><span class="total">$250</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="notes">
+      <div class="note"><span class="badge"><svg viewBox="0 0 24 24"><path d="M19 5L5 19"/><circle cx="7.5" cy="7.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg></span><p>Стоимость указана за минимальный заказ. В зависимости от количества <b>стоимость рассчитывается индивидуально</b>.</p></div>
+      <div class="note"><span class="badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></svg></span><p>Простановка — <b>2–4 дня</b> с момента заказа, независимо от выбранного формата.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>rankly.links</span><span>Стоимость</span><span class="pg">05</span></div>
+</section>
+
+<!-- 06 PROCESS -->
+<section class="slide">
+  <div class="glow glow-b"></div>
+  <div class="head">
+    <div>
+      <span class="eyebrow">Процесс</span>
+      <h2 class="title" style="margin-top:20px;">Как проходит <span class="cyan">заказ</span></h2>
+    </div>
+    <p class="lead">От заявки до отчёта по индексации — четыре шага и никакой лишней переписки.</p>
+  </div>
+  <div class="body">
+    <div class="steps">
+      <div class="card"><div class="num">01</div><div class="bar"></div><div class="ct">Заявка<br>и бриф</div><div class="cd">Согласуем объём, форматы ссылок, тематику и регион проекта.</div></div>
+      <div class="card"><div class="num">02</div><div class="bar"></div><div class="ct">Подбор<br>доноров</div><div class="cd">Формируем список площадок под рынок и задачи, фиксируем смету.</div></div>
+      <div class="card"><div class="num">03</div><div class="bar"></div><div class="ct">Простановка<br>2–4 дня</div><div class="cd">Размещаем ссылки в согласованном объёме с момента заказа.</div></div>
+      <div class="card"><div class="num">04</div><div class="bar"></div><div class="ct">Индексация<br>и отчёт</div><div class="cd">Прогоняем размещения через свой индексатор и отдаём отчёт.</div></div>
+    </div>
+    <div class="timeline">
+      <span class="dot"></span>
+      <span class="t"><b>Простановка: 2–4 дня</b> с момента заказа &nbsp;·&nbsp; отчёт по индексации — после прогона через собственный индексатор</span>
+    </div>
+  </div>
+  <div class="foot"><span>rankly.links</span><span>Процесс</span><span class="pg">06</span></div>
+</section>
+
+<!-- 07 INDEXATION -->
+<section class="slide">
+  <div class="glow glow-a"></div>
+  <div class="head">
+    <div>
+      <span class="eyebrow">Индексация и отчётность</span>
+      <h2 class="title" style="margin-top:20px;">Результат видно <span class="cyan">в индексе</span></h2>
+    </div>
+    <p class="lead">Размещённая ссылка работает только тогда, когда она в индексе. Поэтому мы доводим её туда сами.</p>
+  </div>
+  <div class="body">
+    <div class="idx">
+      <div class="hero">
+        <span class="eyebrow">Средний показатель</span>
+        <div class="big" style="margin-top:22px;">60–70%</div>
+        <div class="lbl">размещённых ссылок попадают в индекс после прогона через собственный индексатор.</div>
+      </div>
+      <div class="list">
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 10l7-7 7 7"/></svg></div>
+          <div><div class="ct">Собственный индексатор</div><div class="cd">Инструмент на нашей стороне: не ждём индексации, а ускоряем её для каждого размещения.</div></div>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h10"/></svg></div>
+          <div><div class="ct">Удобные отчёты</div><div class="cd">По каждому заказу — список размещений, площадки и статус индексации. Без ручной сверки.</div></div>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div><div class="ct">Сроки под контролем</div><div class="cd">Простановка 2–4 дня с момента заказа, дальше — работа по индексации и отчёт.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>rankly.links</span><span>Индексация</span><span class="pg">07</span></div>
+</section>
+
+<!-- 08 CTA -->
+<section class="slide">
+  <div class="glow glow-a"></div><div class="glow glow-b"></div>
+  <div class="head" style="align-items:center;">
+    <div><span class="eyebrow">Контакты</span></div>
+    <p class="lead">Рассчитаем смету под ваш объём и подберём комбинацию форматов под задачи проекта.</p>
+  </div>
+  <div class="body">
+    <div class="cta-wrap">
+      <div>
+        <h2 class="title" style="font-size:74px;">Готовы<br>начать<span class="cyan">?</span></h2>
+        <p>Напишите объём и тематику проекта — вернёмся с расчётом стоимости и сроками простановки.</p>
+        <span class="btn">Обсудить проект <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:none;stroke:#09090B;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+      </div>
+      <div class="contacts">
+        <div class="row"><span class="l">Telegram</span><span class="v ph">указать контакт</span></div>
+        <div class="row"><span class="l">E-mail</span><span class="v ph">указать контакт</span></div>
+        <div class="row"><span class="l">Сайт</span><span class="v">rankly.links</span></div>
+        <div class="row"><span class="l">Простановка</span><span class="v cyan">2–4 дня</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>rankly.links</span><span>Коммерческое предложение · 2026</span><span class="pg">08</span></div>
+</section>
+
+</body>
+</html>
